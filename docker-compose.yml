@@ -1,0 +1,24 @@
+# https://hub.docker.com/r/apache/airflow
+version: '3.2'
+networks:
+  zyb_prd_over:
+    external:
+      name: "zyb_prd_over"
+services:
+  zyb-airflow:
+    image: "zyb-registry:5000/airflow:v1.1-zyb"
+    build: .
+    volumes:
+      - ./af_home:/airflow:rw 
+    networks:
+      - zyb_prd_over
+    ports:
+      - 10088:8080
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          cpus: '0.64'
+          memory: 2048M
