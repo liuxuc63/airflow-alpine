@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TRY_LOOP="20"
+TRY_LOOP="16"
 
 : "${REDIS_HOST:="redis"}"
 : "${REDIS_PORT:="6379"}"
